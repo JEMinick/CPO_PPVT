@@ -32,9 +32,9 @@ for ( var i=1; i < aEnvKey.length; i++ ) {
 
 const jKeysJSON =
 {
-  "private_key": process.env.GCS_PROJECT_KEY,
-  "client_email": process.env.GCS_CLIENT_EMAIL,
-  "client_id": process.env.GCS_CLIENT_ID
+  private_key: process.env.GCS_PROJECT_KEY,
+  client_email: process.env.GCS_CLIENT_EMAIL,
+  client_id: process.env.GCS_CLIENT_ID
 };
 
 // const sKeysJSON =
