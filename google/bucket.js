@@ -21,20 +21,35 @@ for ( var i=1; i < aEnvKey.length; i++ ) {
 // console.log( `New EnvKey:` );
 // console.log( sNewEnvKey );
 
-const sKeysJSON =`
+// const storage = new Storage({
+//   projectId,
+//   credentials: {
+//       client_id,
+//       client_email,
+//       private_key,
+//   }
+// });
+
+const jKeysJSON =
 {
-  "type": "service_account",
-  "project_id": "${process.env.GCS_PROJECT_ID}",
-  "private_key_id": "${process.env.GCS_PROJECT_KEY_ID}",
-  "private_key": "${sNewEnvKey}",
-  "client_email": "${process.env.GCS_CLIENT_EMAIL}",
-  "client_id": "${process.env.GCS_CLIENT_ID}",
-  "auth_uri": "${process.env.GCS_AUTH_URL}",
-  "token_uri": "${process.env.GCS_TOKEN_URL}",
-  "auth_provider_x509_cert_url": "${process.env.GCS_AUTH_PROVIDER_X509_CERT_URL}",
-  "client_x509_cert_url": "${process.env.GCS_CLIENT_X509_CERT_URL}"
-}
-`;
+  "private_key": process.env.GCS_PROJECT_KEY,
+  "client_email": process.env.GCS_CLIENT_EMAIL,
+  "client_id": process.env.GCS_CLIENT_ID
+};
+
+// const sKeysJSON =
+// {
+//   "type": "service_account",
+//   "project_id": "${process.env.GCS_PROJECT_ID}",
+//   "private_key_id": "${process.env.GCS_PROJECT_KEY_ID}",
+//   "private_key": "${sNewEnvKey}",
+//   "client_email": "${process.env.GCS_CLIENT_EMAIL}",
+//   "client_id": "${process.env.GCS_CLIENT_ID}",
+//   "auth_uri": "${process.env.GCS_AUTH_URL}",
+//   "token_uri": "${process.env.GCS_TOKEN_URL}",
+//   "auth_provider_x509_cert_url": "${process.env.GCS_AUTH_PROVIDER_X509_CERT_URL}",
+//   "client_x509_cert_url": "${process.env.GCS_CLIENT_X509_CERT_URL}"
+// };
 
 
 // var stream = fs.createWriteStream("my_file.json");
@@ -54,28 +69,28 @@ const sKeysJSON =`
 //   stream.end();
 // });
 
-fs.writeFile( outputFile, sKeysJSON, (error) => {
-  if ( error ) {
-      bError = true;
-      console.error(error);
-  } else {
-    // if ( bDebugging )
-    //   console.log(`\nFILE CONTENTS:`)
-  }
-});
-if ( !bError ) {
-  console.log( `Created file: ${outputFile}...` );
-  serviceKey = outputFile;
-}
-else {
-  console.log( `Unable to create file: ${outputFile}...` );
-}
+// fs.writeFile( outputFile, sKeysJSON, (error) => {
+//   if ( error ) {
+//       bError = true;
+//       console.error(error);
+//   } else {
+//     // if ( bDebugging )
+//     //   console.log(`\nFILE CONTENTS:`)
+//   }
+// });
+// if ( !bError ) {
+//   console.log( `Created file: ${outputFile}...` );
+//   serviceKey = outputFile;
+// }
+// else {
+//   console.log( `Unable to create file: ${outputFile}...` );
+// }
 
 
 // projectId: 'storage'
 const storage = new Storage({
   projectId: process.env.GCS_PROJECT_ID, 
-  keyFilename: serviceKey
+  credentials: jKeysJSON
 })
 
 // projectid: process.env.GCLOUD_PROJECT, 
