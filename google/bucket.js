@@ -91,7 +91,7 @@ const jKeysJSON =
 // projectId: 'storage'
 const storage = new Storage({
   projectId: process.env.GCS_PROJECT_ID,
-  keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
+  credentials: jKeysJSON
 })
 // keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
 // credentials: jKeysJSON

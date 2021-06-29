@@ -13,7 +13,7 @@ const uploadImage = ( file ) => new Promise( (resolve, reject) => {
     const { originalname, buffer } = file
     const blob = bucket.file( originalname.replace(/ /g,"_"))
     const blobStream = blob.createWriteStream({
-        resumable: false
+        resumable: true
     })
 
     blobStream.on( 'finish', () => {
