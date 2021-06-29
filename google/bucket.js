@@ -13,8 +13,9 @@ const fs = require('fs');
 let sLine="";
 var sEnvKey = `${process.env.GCS_PROJECT_KEY}`;
 var aEnvKey = sEnvKey.split("\n");
-var sNewEnvKey = aEnvKey[0]+'\\n';
-for ( var i=1; i < aEnvKey.length; i++ ) {
+// var sNewEnvKey = aEnvKey[0]+'\\n';
+let sNewEnvKey = '';
+for ( var i=0; i < aEnvKey.length; i++ ) {
   sLine = aEnvKey[i];
   sNewEnvKey = sNewEnvKey + sLine + ((i < aEnvKey.length-1) ? '\\n' : '');
 }
@@ -30,12 +31,12 @@ for ( var i=1; i < aEnvKey.length; i++ ) {
 //   }
 // });
 
-const jKeysJSON =
-{
-  private_key: process.env.GCS_PROJECT_KEY,
-  client_email: process.env.GCS_CLIENT_EMAIL,
-  client_id: process.env.GCS_CLIENT_ID
-};
+// const jKeysJSON =
+// {
+//   private_key: process.env.GCS_PROJECT_KEY,
+//   client_email: process.env.GCS_CLIENT_EMAIL,
+//   client_id: process.env.GCS_CLIENT_ID
+// };
 
 // const sKeysJSON =
 // {
