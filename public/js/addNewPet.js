@@ -50,7 +50,12 @@ const addNewPet = async (event) => {
             method: "POST", 
             body: formData
         })
+        
         const {data} = await response.json();
+
+        console.log(  `POST image response:` );
+        console.log( response );
+
         // const {status} = await response.json()
 
         // const {err} = await response.json()
