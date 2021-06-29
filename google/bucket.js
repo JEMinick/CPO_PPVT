@@ -31,12 +31,12 @@ for ( var i=0; i < aEnvKey.length; i++ ) {
 //   }
 // });
 
-// const jKeysJSON =
-// {
-//   private_key: process.env.GCS_PROJECT_KEY,
-//   client_email: process.env.GCS_CLIENT_EMAIL,
-//   client_id: process.env.GCS_CLIENT_ID
-// };
+const jKeysJSON =
+{
+  private_key: process.env.GCS_PROJECT_KEY,
+  client_email: process.env.GCS_CLIENT_EMAIL,
+  client_id: process.env.GCS_CLIENT_ID
+};
 
 // const sKeysJSON =
 // {
@@ -90,9 +90,11 @@ for ( var i=0; i < aEnvKey.length; i++ ) {
 
 // projectId: 'storage'
 const storage = new Storage({
-  projectId: process.env.GCS_PROJECT_ID, 
-  keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
+  projectId: process.env.GCS_PROJECT_ID,
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
 })
+// credentials: jKeysJSON
+//keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
 
 // projectid: process.env.GCLOUD_PROJECT, 
 // const storage = new Storage({
