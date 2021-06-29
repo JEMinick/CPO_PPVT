@@ -39,7 +39,7 @@ const jKeysJSON =
   client_id: process.env.GCS_CLIENT_ID
 };
 
-// const sKeysJSON =
+// const sKeysJSON =`
 // {
 //   "type": "service_account",
 //   "project_id": "${process.env.GCS_PROJECT_ID}",
@@ -51,7 +51,7 @@ const jKeysJSON =
 //   "token_uri": "${process.env.GCS_TOKEN_URL}",
 //   "auth_provider_x509_cert_url": "${process.env.GCS_AUTH_PROVIDER_X509_CERT_URL}",
 //   "client_x509_cert_url": "${process.env.GCS_CLIENT_X509_CERT_URL}"
-// };
+// `};
 
 
 // var stream = fs.createWriteStream("my_file.json");
@@ -91,7 +91,7 @@ const jKeysJSON =
 // projectId: 'storage'
 const storage = new Storage({
   projectId: process.env.GCS_PROJECT_ID,
-  keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
+  credentials: jKeysJSON
 })
 // keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
 // credentials: jKeysJSON
