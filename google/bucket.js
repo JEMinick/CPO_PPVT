@@ -87,14 +87,14 @@ const jKeysJSON =
 //   console.log( `Unable to create file: ${outputFile}...` );
 // }
 
-
 // projectId: 'storage'
 const storage = new Storage({
   projectId: process.env.GCS_PROJECT_ID,
-  keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
+  credentials: jKeysJSON
 })
+// keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
 // credentials: jKeysJSON
-//keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
+// keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
 
 // projectid: process.env.GCLOUD_PROJECT, 
 // const storage = new Storage({
