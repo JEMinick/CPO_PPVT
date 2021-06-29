@@ -28,11 +28,11 @@ const addNewPet = async (event) => {
     const pet_license_no = document.querySelector('#pet-license-no').value.trim();
     const license_exp_date = document.querySelector('#lic-exp-date').value.trim();
     const breed = document.querySelector('#pet-breed').value.trim();
-    const dob = document.querySelector('#pet-dob').value; // .value.trim();
-    if ( dob && dob.length ) {
-      dob = dob.trim();
+    let dob;
+    if ( document.querySelector('#pet-dob').value ) {
+      dob = document.querySelector('#pet-dob').value.trim();
     }
-  
+
     let pet_photo = '';
 
     if ( petname ) {
@@ -50,7 +50,7 @@ const addNewPet = async (event) => {
             method: "POST", 
             body: formData
         })
-        const {data} = await response.json()
+        const {data} = await response.json();
         // const {status} = await response.json()
 
         // const {err} = await response.json()
@@ -59,7 +59,7 @@ const addNewPet = async (event) => {
         // pet_photo = data;
         pet_photo = JSON.stringify(data);
 
-        console.log( `Pet Image: );
+        console.log( `Pet Image:` );
         console.log( data );
       }
 
@@ -86,11 +86,11 @@ const addNewPet = async (event) => {
             }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+
       if (response2.ok) {
         document.location.replace('/');
       } else {
-        alert(response.statusText);
+        alert(response2.statusText);
         // alert( JSON.stringify(response2.statusText) );
       }
     }
@@ -99,5 +99,3 @@ const addNewPet = async (event) => {
   document
     .querySelector( '.new-pet-form' )
     .addEventListener( 'submit', addNewPet );
-    // .addEventListener( 'click', addNewPet );
-  
