@@ -28,9 +28,9 @@ const addNewPet = async (event) => {
     const pet_license_no = document.querySelector('#pet-license-no').value.trim();
     const license_exp_date = document.querySelector('#lic-exp-date').value.trim();
     const breed = document.querySelector('#pet-breed').value.trim();
-    const dob = document.querySelector('#pet-dob'); // .value.trim();
+    const dob = document.querySelector('#pet-dob').value; // .value.trim();
     if ( dob && dob.length ) {
-      dob = dob.value.trim();
+      dob = dob.trim();
     }
   
     let pet_photo = '';
@@ -59,7 +59,8 @@ const addNewPet = async (event) => {
         // pet_photo = data;
         pet_photo = JSON.stringify(data);
 
-        console.log( `Pet Image: [${pet_photo}]` );
+        console.log( `Pet Image: );
+        console.log( data );
       }
 
       console.log( "Attempting to add pet: [" 
