@@ -89,18 +89,20 @@ const jKeysJSON =
 // }
 
 // projectId: 'storage'
-// const storage = new Storage({
-//   projectId: process.env.GCS_PROJECT_ID,
-//   credentials: jKeysJSON
-// })
+const storage = new Storage({
+  projectId: process.env.GCS_PROJECT_ID,
+  credentials: jKeysJSON
+})
 // keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS
 // credentials: jKeysJSON
 // keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
 
+// -------------------------------------------------------------------------------
 // Instantiates a client. If you don't specify credentials when constructing
 // the client, the client library will look for credentials in the
 // environment.
-const storage = new Storage();
+// const storage = new Storage();
+// -------------------------------------------------------------------------------
 
 // projectid: process.env.GCLOUD_PROJECT, 
 // const storage = new Storage({
