@@ -4,6 +4,7 @@ const Cloud = require( '@google-cloud/storage' )
 const path =  require( 'path' )
 let serviceKey = path.join(__dirname,'./keys.json');
 let outputFile = path.join(__dirname,'./keys2.json');
+let gcFile = path.join(__dirname,'./gcs-ppvt-bbd201c2e459.json');
 
 const { Storage } = Cloud
 

@@ -53,7 +53,7 @@ const addNewPet = async (event) => {
         
         const {data} = await response.json();
 
-        console.log(  `POST image response:` );
+        console.log(  `POST (image image) response:` );
         console.log( response );
 
         // const {status} = await response.json()
