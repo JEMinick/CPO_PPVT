@@ -21,6 +21,7 @@ router.get('/all/:id', withAuth, (req, res) => {
 router.get('/:id', withAuth, (req, res) => {
   Vaccine.findAll({
     where: {
+      // The id is unique to the specific user/pet...
       id: req.params.id
     }
   })
@@ -61,8 +62,7 @@ router.put('/:id', withAuth, (req, res) => {
     vaccine_exp_date: req.body.vaccine_exp_date
   },{
     where: {
-      // user_id: req.session.user_id,
-      // pet_id: req.body.pet_id,
+      // The id is unique to the specific user/pet...
         id: req.params.id
     }
   })
@@ -80,7 +80,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 // Deletion of an existing vaccine for specific user/pet:
-router.delete('/:id', withAuth, (req, res) => {
+router.get('/del/:id', withAuth, (req, res) => {
   Vaccine.destroy({
     where: {
       id: req.params.id
@@ -91,7 +91,8 @@ router.delete('/:id', withAuth, (req, res) => {
       res.status(404).json({ message: 'No vaccine found to delete using this id!' });
       return;
     }
-    res.json(dbVaccineData);
+    // res.json(dbVaccineData);
+    res.redirect( '/' );
   })
   .catch(err => {
     console.log(err);
