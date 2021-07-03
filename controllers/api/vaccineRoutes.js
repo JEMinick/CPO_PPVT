@@ -42,9 +42,11 @@ router.get('/:id', withAuth, (req, res) => {
     const vaccineInfo = dbVaccineRecord.get({ plain: true });
     // Create a file name to display on the form:
     vaccineInfo.vaccine_license_local = '';
-    if ( vaccineInfo.vaccine_license_file.length ) {
-      var tmpArray=vaccineInfo.vaccine_license_file.split('/');
-      vaccineInfo.vaccine_license_local = tmpArray[tmpArray.length-1];
+    if ( vaccineInfo.vaccine_license_file ) {
+      if ( vaccineInfo.vaccine_license_file.length ) {
+        var tmpArray=vaccineInfo.vaccine_license_file.split('/');
+        vaccineInfo.vaccine_license_local = tmpArray[tmpArray.length-1];
+      }
     }
     console.log( `\nEDIT vaccine info:` );
     console.log( vaccineInfo );

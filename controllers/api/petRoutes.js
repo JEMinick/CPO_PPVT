@@ -15,15 +15,19 @@ router.get('/:id', withAuth, (req, res) => {
     const petInfo = dbPetRecord.get({ plain: true });
     // Create a file name to display on the form:
     petInfo.pet_photo_local = '';
-    if ( petInfo.pet_photo.length ) {
-      var tmpArray=petInfo.pet_photo.split('/');
-      petInfo.pet_photo_local = tmpArray[tmpArray.length-1];
+    if ( petInfo.pet_photo ) {
+      if ( petInfo.pet_photo.length ) {
+        var tmpArray=petInfo.pet_photo.split('/');
+        petInfo.pet_photo_local = tmpArray[tmpArray.length-1];
+      }
     }
     // Create a file name to display on the form:
     petInfo.pet_license_local = '';
-    if ( petInfo.pet_license_file.length ) {
-      var tmpArray=petInfo.pet_license_file.split('/');
-      petInfo.pet_license_local = tmpArray[tmpArray.length-1];
+    if ( petInfo.pet_license_file ) {
+      if ( petInfo.pet_license_file.length ) {
+        var tmpArray=petInfo.pet_license_file.split('/');
+        petInfo.pet_license_local = tmpArray[tmpArray.length-1];
+      }
     }
     console.log( `\nEDIT pet info:` );
     console.log( petInfo );
