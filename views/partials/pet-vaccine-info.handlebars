@@ -7,7 +7,7 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="col-10 list-container">
+      <div class="col-10 list-container align-content-center align-center">
         <div class="card ml-2">
 
           <div class="flex-column justify-space-around">
@@ -17,22 +17,43 @@
           </div>
           
           <ul class="list-group">
+            {{#if date_of_vaccine}}
             <li>Date Administered: [{{format_date date_of_vaccine}}]</li>
+            {{else}}
+            <li>Date Administered:</li>
+            {{/if}}
+            {{#if vaccine_exp_date}}
             <li>Date Expires:      [{{format_date vaccine_exp_date}}]</li>
+            {{else}}
+            <li>Date Expires:</li>
+            {{/if}}
+            {{#if vaccine_license_file}}
+              <li>License: 
+                <a class="link" href="{{vaccine_license_file}}" target="_blank">  <i class="fas fa-file-pdf text-link"></i> View File </a>
+              </li>
+            {{/if}}
           </ul>
         </div>
       </div>
 
-      <div class="col">
+      {{!-- <div class="col display-flex justify-space-between"> --}}
+      <div class="col align-center align-content-center">
+        <button id="btnFetchPDF" 
+                class="btn btn-primary mb-2 ml-1" 
+                type="button">
+                {{!-- <a href="/api/vaccines/{{id}}"> --}}
+                  <i class="fas fa-file-pdf text-light"></i>
+                {{!-- </a> --}}
+        </button>
         <button id="btnEditVaccine" 
-                class="btn btn-primary mb-2 mr-1" 
+                class="btn btn-primary mb-2 ml-1" 
                 type="button">
                 <a href="/api/vaccines/{{id}}">
                   <i class="fas fa-user-edit text-light"></i>
                 </a>
         </button>
         <button id="btnDeleteVaccine" 
-                class="btn btn-primary mb-2 mr-1" 
+                class="btn btn-primary mb-2 ml-1" 
                 type="button"
                 alt="Edit Vaccine">
                 <a href="/api/vaccines/del/{{id}}">
@@ -53,3 +74,5 @@
   </div>
 
 </div>
+
+{{!-- <script src="/js/vaccineButtons.js"></script> --}}

@@ -47,6 +47,10 @@ Pet.init({
     type: DataTypes.TEXT,
     allowNull: true
   },
+  pet_license_file: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
   date_created: {
     type: DataTypes.DATEONLY,
     allowNull: false,

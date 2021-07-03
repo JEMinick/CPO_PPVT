@@ -1,3 +1,9 @@
+:root {
+  --blue-lighten-2: #64b5f6; /* #64b5f6 blue lighten-2 */
+  --blue-lighten-5: #e3f2fd; /* #e3f2fd blue lighten-5-2 */
+  --blue-darken-2: #1976d2; /* #1976d2 blue darken-2 */
+}
+
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
@@ -125,6 +131,37 @@ ul {
   margin-left: -10px;
 }
 
+.yellow-brdr {
+  border: 2px dotted yellow ;
+}
+
+.gray-brdr {
+  border: 2px solid gray;
+  padding: 5px 10px;
+}
+
+.edit-ftr {
+  background-color: var(--blue-lighten-5);
+}
+
+.edit-ftr-icons {
+  background-color: var(--blue-darken-2);
+}
+
+/* <!-- The Bootstrap break points: -------------------------------- -->
+   <!-- xs      sm        md        lg         xl          xxl       -->
+   <!-- <576px  ≥576px    ≥768px    ≥992px     ≥1200px	    ≥1400px   -->
+   <!-- ------------------------------------------------------------ -->
+   <!-- 0..575  576..767  768..991  992..1199  1200..1399  1400..??? -->
+   <!-- ------------------------------------------------------------ -->
+
+   <!-- The Bootstrap 'container-fluid' class provides: -->
+   <!--    width: 100%;         -->
+   <!--    padding-right: 15px; -->
+   <!--    padding-left: 15px;  -->
+   <!--    margin-right: auto;  -->
+   <!--    margin-left: auto;   --> */
+
 /* ------------------------------ */
 /* --- Need to be responsive: --- */
 /* ------------------------------ */
@@ -142,10 +179,12 @@ ul {
     position: relative;
     margin-left: -20px;
   } */
-  .col-5 {
+
+  /* .col-5 {
     /* flex: 0 0 41.66667%; */
     max-width: 100%;
-  }
+  } */
+
   .vacIcons {
     position: relative;
     margin-left: 0;

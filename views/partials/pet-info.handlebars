@@ -5,10 +5,13 @@
   </div>
 
   <div class="container-fluid">
-    <div class="row w-100">
+    <div class="row">
 
-      <div class="col-5 list-container mt-3 ml-2">
+      <div class="col-sm-5 list-container mt-3 ml-2">
         <div class="card">
+
+        {{!-- vaccine-id is needed on an edit: --}}
+        <input type="hidden" name="pet-id" value="{{id}}" />
 
           <div class="flex-column justify-space-around">
             <div class="display-flex justify-space-between align-center p-2">
@@ -22,8 +25,21 @@
           </div>
           
           <ul class="list-group">
-            <li>Breed: [{{breed}}]</li>
-            <li>Born:  [{{format_date dob}}]</li>
+            {{#if breed.length}}
+              <li>Breed: [{{breed}}]</li>
+            {{else}}
+              <li>Breed:</li>
+            {{/if}}
+            {{#if dob}}
+              <li>Born:  [{{format_date dob}}]</li>
+            {{else}}
+              <li>Born:</li>
+            {{/if}}
+            {{#if pet_license_file}}
+              <li>License: 
+                <a class="link" href="{{pet_license_file}}" target="_blank">  <i class="fas fa-file-pdf text-link"></i> View File </a>
+              </li>
+            {{/if}}
             <li>Last edited by {{user.username}} on {{format_date updated_at}}</li>
           </ul>
 
@@ -57,7 +73,7 @@
 
         <div class="icons mb-2">
           {{!-- <i class="fas fa-plus text-light">Add Pet</i> --}}
-          <button class="btn btn-primary" id="addpetbtn" type="button"><i class="fas fa-plus text-light">Add Vaccine</i></button>
+          <button class="btn btn-primary w-100" id="addvaccinebtn" type="button"><i class="fas fa-plus text-light">Add Vaccine</i></button>
         </div>
 
       </div>
@@ -67,4 +83,4 @@
 
 </div>
 
-{{!-- <script src="/js/petImage.js"></script> --}}
+<script src="/js/AddVaccine.js"></script>
