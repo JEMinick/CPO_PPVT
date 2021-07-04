@@ -29,10 +29,14 @@ By creating this full-stack application, we learned the following:
 ### Group Project Awards:
 [Personal Pet Vaccine Tracker for Concerned Pet Owners Award](https://youtu.be/XBOFUG7HsXA)
 
+### A sample login home page:
+![Screen shot:](./public/assets/CPOPPVT.png?raw=true)
+
+
 ## Installation
 <a name="installation"></a>
 
-Modules and packages required to be installed:
+Modules and packages required to be installed (defined within the package.json file):
 
 ```shell
 npm i
@@ -43,7 +47,7 @@ npm i
 
 To run this application:
 ```shell
-node server
+node server.js
 ```
 
 ## Contributing
