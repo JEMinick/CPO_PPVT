@@ -8,7 +8,7 @@ const withAuth = require('../utils/auth');
 
 // ====================================================================================
 router.get('/', withAuth, (req, res) => {
-  res.render('dashboard', { loggedIn: true, isDashboard: true });
+  res.render('dashboard', { loginid: req.session.user_id, loggedIn: true, isDashboard: true });
 })
 // --------------------------------------------------------------
 // router.get('/', withAuth, (req, res) => {

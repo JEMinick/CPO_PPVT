@@ -111,7 +111,7 @@ router.put('/:id', withAuth, (req, res) => {
   });
 });
 
-// Deletion of an existing vaccine for specific user/pet:
+// Deletion of an existing VACCINE for specific user/pet:
 router.get('/del/:id', withAuth, (req, res) => {
   Vaccine.destroy({
     where: {

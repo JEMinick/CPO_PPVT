@@ -1,8 +1,27 @@
+<div class="flex-column justify-space-around">
+  <div class="display-flex justify-space-between align-center mb-4">
+    <h3>My Profile</h3>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="icons">
+        {{!-- <i class="fas fa-plus text-light">Add Pet</i> --}}
+        <button class="btn btn-primary" 
+                id="delprofilebtn" 
+                type="submit">
+                <a href="/api/users/del/{{loginid}}">
+                  <i class="fas fa-trash text-light">  Delete Profile</i>
+                </a>
+        </button>
+      </div>
+    </nav>
+  </div>
+</div>
 
-<section>
-  <h2>My Profile</h2>
-</section>
+{{!-- {{#if petInfo.length}}
+  <article>
+    {{#each petInfo as |pet| }}
+      {{> pet-info pet}}
+    {{/each}}
+  </article>
+{{/if}} --}}
 
-{{!-- <button type="submit" class="btn"><a class="link" href="/dashboard/new">+ New Pet</a></button> --}}
-
-{{!-- <script src="/js/add-post.js"></script> --}}
+{{!-- <script src="/js/addPet.js"></script> --}}
