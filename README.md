@@ -26,6 +26,9 @@ By creating this full-stack application, we learned the following:
 *   Google Cloud Platform; and,
 *   Google Cloud Buckets.
 
+### Group Project Awards:
+[Personal Pet Vaccine Tracker for Concerned Pet Owners Award](https://youtu.be/XBOFUG7HsXA)
+
 ## Installation
 <a name="installation"></a>
 
