@@ -38,13 +38,23 @@
 
       {{!-- <div class="col display-flex justify-space-between"> --}}
       <div class="col align-center align-content-center">
-        <button id="btnFetchPDF" 
-                class="btn btn-primary mb-2 ml-1" 
-                type="button">
-                {{!-- <a href="/api/vaccines/{{id}}"> --}}
+        {{#if vaccine_license_file}}
+          {{!-- <li>License: 
+            <a class="link" href="{{vaccine_license_file}}" target="_blank">  <i class="fas fa-file-pdf text-link"></i> View File </a>
+          </li> --}}
+          <button id="btnFetchPDF" 
+                  class="btn btn-primary mb-2 ml-1" 
+                  type="button">
+                  {{!-- <i class="fas fa-file-pdf text-light"></i> --}}
+                  <a class="link" href="{{vaccine_license_file}}" target="_blank">  <i class="fas fa-file-pdf text-link"></i></a>
+          </button>
+        {{else}}
+          <button id="btnFetchPDF" 
+                  class="btn btn-primary mb-2 ml-1" 
+                  type="button">
                   <i class="fas fa-file-pdf text-light"></i>
-                {{!-- </a> --}}
-        </button>
+          </button>
+        {{/if}}
         <button id="btnEditVaccine" 
                 class="btn btn-primary mb-2 ml-1" 
                 type="button">
