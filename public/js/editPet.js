@@ -72,7 +72,7 @@ const editPet = async (event) => {
 
         let formPhotoImage = new FormData()
         formPhotoImage.append("file", file)
-        const response = await fetch('/uploadimg', {
+        const response = await fetch('/uploadimages', {
             method: "POST", 
             body: formPhotoImage
         })
@@ -103,7 +103,7 @@ const editPet = async (event) => {
 
         let formLicenseData = new FormData()
         formLicenseData.append("file", file)
-        const response = await fetch('/uploadimg', {
+        const response = await fetch('/uploadimages', {
             method: "POST", 
             body: formLicenseData
         })

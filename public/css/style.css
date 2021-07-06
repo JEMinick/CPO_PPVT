@@ -166,7 +166,7 @@ ul {
 /* --- Need to be responsive: --- */
 /* ------------------------------ */
 
-@media screen and (max-width: 625px)
+/* @media screen and (max-width: 625px)
 {
   .container {
     min-width: 400px;
@@ -175,18 +175,9 @@ ul {
     padding-left: 2%;
     padding: 1% 15px 1% 15px;
   }
-  /* .btn {
-    position: relative;
-    margin-left: -20px;
-  } */
-
-  /* .col-5 {
-    /* flex: 0 0 41.66667%; */
-    max-width: 100%;
-  } */
 
   .vacIcons {
     position: relative;
     margin-left: 0;
   }
-}
+} */

@@ -76,7 +76,7 @@ const editVaccine = async (event) => {
 
         let formLicenseData = new FormData()
         formLicenseData.append("file", file)
-        const response = await fetch('/uploadimg', {
+        const response = await fetch('/uploadimages', {
             method: "POST", 
             body: formLicenseData
         })

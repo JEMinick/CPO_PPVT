@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const uploadStorage = require('../google/upload-storage')
+const {uploadStorage, deleteImage} = require('../google/upload-storage')
 
 // router.post( '/', async (req, res) => {
 //   try {
@@ -38,6 +38,32 @@ router.post( '/', async (req, res) => {
     console.log( '\nUPLOAD ERROR:' );
     console.log( err );
     res.status(400).json({err})
+  }
+})
+
+router.delete( '/', async (req, res) => {
+  let myFile = req.body.file
+  try {
+    console.log( `\nrouter.delete('${myFile}')\n` )
+    let aFile = myFile.split('/');
+    if ( aFile.length > 1 ) {
+      myFile = aFile[aFile.length-1]
+    }
+    await deleteImage(myFile)
+
+    res.status(200).json({
+      message: 'upload deletion was successful',
+      data: myFile
+    })
+  }
+  catch(err) {
+    // console.log( '\nUPLOAD ERROR:' )
+    // console.log( err )
+    res.status(400).json({
+      err,
+      message: 'An error occured deleting the upload image',
+      data: myFile
+    })
   }
 })
 

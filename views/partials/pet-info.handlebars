@@ -1,7 +1,7 @@
 <div class="card">
 
   <div class="card-header text-center">
-    <h4>{{petname}}</h4>
+    <h4 id="pet-name">{{petname}}</h4>
   </div>
 
   <div class="container-fluid">
@@ -15,12 +15,32 @@
 
           <div class="flex-column justify-space-around">
             <div class="display-flex justify-space-between align-center p-2">
-              <h3><a class="link" href="/api/pets/{{id}}">{{petname}}</a></h3>
-              <nav class="navbar navbar-dark bg-dark">
+              {{!-- <h3><a class="link" href="/api/pets/{{id}}">{{petname}}</a></h3> --}}
+              {{!-- <nav class="navbar navbar-dark bg-dark"> --}}
                 <div class="icons">
-                  <a class="link" href="/api/pets/{{id}}">Edit <i class="fas fa-user-edit text-light"></i></a>
+                  {{!-- <a class="link" 
+                     href="/api/pets/{{id}}">Edit <i class="fas fa-user-edit text-light"></i>
+                  </a> --}}
+                  <button id="btnEditPet" 
+                          class="btn btn-primary mb-2 ml-1" 
+                          type="button"
+                          alt="Edit Pet">
+                          <a href="/api/pets/edit/{{id}}">Edit  
+                             <i class="fas fa-user-edit text-light"></i>
+                          </a>
+                  </button>
+
+                  <button id="btnDeletePet" 
+                          class="btn btn-primary mb-2 ml-1" 
+                          type="button"
+                          alt="Delete Pet">
+                          Delete 
+                          {{!-- <a href="/api/pets/delete/{{id}}">Delete  --}}
+                             <i class="fas fa-trash text-light"></i>
+                          {{!-- </a> --}}
+                  </button>
                 </div>
-              </nav>
+              {{!-- </nav> --}}
             </div>
           </div>
           
@@ -72,8 +92,10 @@
         {{/if}}
 
         <div class="icons mb-2">
-          {{!-- <i class="fas fa-plus text-light">Add Pet</i> --}}
-          <button class="btn btn-primary w-100" id="addvaccinebtn" type="button"><i class="fas fa-plus text-light">Add Vaccine</i></button>
+          <button class="btn btn-primary w-100" 
+                  id="addvaccinebtn" 
+                  type="button"><i class="fas fa-plus text-light">Add Vaccine</i>
+          </button>
         </div>
 
       </div>
@@ -83,4 +105,4 @@
 
 </div>
 
-<script src="/js/addVaccine.js"></script>
+<script src="/js/petInfoButtons.js"></script>

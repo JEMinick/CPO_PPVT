@@ -8,6 +8,6 @@ const uploadRoutes = require( './uploadRoutes' );
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
 router.use('/dashboard', dashboardRoutes);
-router.use('/uploadimg', uploadRoutes);
+router.use('/uploadimages', uploadRoutes);
 
 module.exports = router;

@@ -12,6 +12,7 @@ class Pet extends Model {}
   // breed
   // dob
   // pet_photo
+  // pet_license_file
   // date_created :: default: NOW
   // user_id
 
