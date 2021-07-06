@@ -26,6 +26,12 @@ By creating this full-stack application, we learned the following:
 *   Google Cloud Platform; and,
 *   Google Cloud Buckets.
 
+### The active link to the CPO-PPVT app on Heroku:
+[Personal Pet Vaccine Tracker for Concerned Pet Owners app](https://cpoppvt.herokuapp.com/)
+
+### Our gitHub for this project:
+[CPO-PPVT GitHub](https://github.com/JEMinick/CPO_PPVT)
+
 ### Group Project Awards:
 [Personal Pet Vaccine Tracker for Concerned Pet Owners Award](https://youtu.be/XBOFUG7HsXA)
 
