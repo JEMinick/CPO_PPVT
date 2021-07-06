@@ -123,4 +123,34 @@ router.get('/delete/:id', withAuth, (req, res) => {
   })
 });
 
+// ==========================================================================
+// UPDATE an existing USER:
+
+// id  :: NOT NULL
+// username :: NOT NULL
+// email :: NOT NULL
+// password :: NOT NULL
+
+router.put('/:id', withAuth, async (req, res) => {
+  await User.update({
+    username: req.body.username,
+    email: req.body.email
+  },{
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(userInfo => {
+    if (!userInfo) {
+      res.status(404).json({ message: 'No user found to update using this id!' });
+      return;
+    }
+    res.status(200).json(userInfo);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
 module.exports = router;

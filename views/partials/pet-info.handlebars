@@ -1,7 +1,10 @@
 <div class="card">
 
-  <div class="card-header text-center">
+  {{!-- <div class="card-header text-center">
     <h4 id="pet-name">{{petname}}</h4>
+  </div> --}}
+  <div class="card card-rounded card-header text-center mb-3 mt-2 ml-2 mr-2">
+    <h4 id="pet-name" class="mt-2">{{petname}}</h4>
   </div>
 
   <div class="container-fluid">
@@ -12,6 +15,15 @@
 
         {{!-- vaccine-id is needed on an edit: --}}
         <input type="hidden" name="pet-id" value="{{id}}" />
+
+        {{!-- <div class="flex-column justify-space-around">
+          <div class="display-flex justify-space-between align-center p-2">
+            <h3>Pet Information</h3>
+          </div>
+        </div> --}}
+        <div class="card card-rounded card-header text-center mb-3 mt-2 ml-2 mr-2">
+          <h4 class="mt-2">Pet Record</h4>
+        </div>
 
           <div class="flex-column justify-space-around">
             <div class="display-flex justify-space-between align-center p-2">
@@ -43,7 +55,7 @@
               {{!-- </nav> --}}
             </div>
           </div>
-          
+
           <ul class="list-group">
             {{#if breed.length}}
               <li>Breed: [{{breed}}]</li>

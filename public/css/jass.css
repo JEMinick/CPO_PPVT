@@ -394,6 +394,7 @@ h3 {
 
 h4 {
   font-size: 1.5rem;
+  background-color: var(--medium-blue);
 }
 
 h5 {
@@ -1110,6 +1111,7 @@ a:hover {
   /* color: #d9e9e8; */
   color: var(--light-blue); /* white; */
   background-color: var(--dark-blue); /* #4527a0; */
+  margin-top: 1em;
 }
 
 .card .card-body {

@@ -107,6 +107,7 @@ const deletePet = async (event) => {
       if ( response.ok ) {
 
         let jResponse = await response.json();
+        let file='';
 
         console.log( `RETRIEVED pet info:` );
         console.log( jResponse );
@@ -114,8 +115,49 @@ const deletePet = async (event) => {
         console.log( JSON.stringify(jResponse) );
         console.log( `\nDATA:` );
         console.log( `pet id: [${jResponse.id}]` );
+
+
         console.log( `pet_photo: [${jResponse.pet_photo}]` );
+        if ( jResponse.pet_photo.length ) {
+          file = jResponse.pet_photo;
+          console.log( `Deleting image: [${file}]` );
+
+          let formLicenseData = new FormData()
+          formLicenseData.append("file", file)
+          // let jFileInfo = {
+          //   "file": jResponse.pet_vaccines[i].vaccine_license_file
+          // }
+          const response = await fetch('/uploadimages', {
+              method: "DELETE", 
+              body: formLicenseData
+          })
+          
+          const {data} = await response.json();
+  
+          console.log(  `DELETE (image) response:` );
+          console.log( response );
+        }
+
         console.log( `pet_license_file: [${jResponse.pet_license_file}]` );
+        if ( jResponse.pet_license_file.length ) {
+          file = jResponse.pet_license_file;
+          console.log( `Deleting image: [${file}]` );
+
+          let formLicenseData = new FormData()
+          formLicenseData.append("file", file)
+          // let jFileInfo = {
+          //   "file": jResponse.pet_vaccines[i].vaccine_license_file
+          // }
+          const response = await fetch('/uploadimages', {
+              method: "DELETE", 
+              body: formLicenseData
+          })
+          
+          const {data} = await response.json();
+  
+          console.log(  `DELETE (image) response:` );
+          console.log( response );
+        }
 
         let iTotalVaccines=jResponse.pet_vaccines.length
         console.log( `Total # of vaccines for this pet: ${iTotalVaccines}` );
@@ -125,7 +167,7 @@ const deletePet = async (event) => {
           console.log( `${i}: ${jResponse.pet_vaccines[i].vaccine_license_file}` );
 
           if ( jResponse.pet_vaccines[i].vaccine_license_file.length ) {
-            let file = jResponse.pet_vaccines[i].vaccine_license_file;
+            file = jResponse.pet_vaccines[i].vaccine_license_file;
             console.log( `Deleting image: [${file}]` );
 
             let formLicenseData = new FormData()
@@ -163,20 +205,20 @@ const deletePet = async (event) => {
     //       petname
     //     });
 
-    // let response = await fetch(`/api/pets/${iPetID}`, {
-    //     method: 'DELETE',
-    //     body: JSON.stringify(
-    //         { iPetID,
-    //           petname
-    //         }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   });
+    let response = await fetch(`/api/pets/${iPetID}`, {
+        method: 'DELETE',
+        body: JSON.stringify(
+            { iPetID,
+              petname
+            }),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-    // if ( response.ok ) {
-    //   document.location.replace('/');
-    // } else {
-    //   alert(response.statusText);
-    // }
+    if ( response.ok ) {
+      document.location.replace('/');
+    } else {
+      alert(response.statusText);
+    }
 
   }
 };
