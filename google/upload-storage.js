@@ -1,5 +1,7 @@
 const bucket = require( './bucket.js' )
 require('dotenv').config()
+const uuid = require("uuid");
+const uuidv1 = uuid.v1;
 
 /*
  * @param { File } object file object that will be uploaded
@@ -12,13 +14,15 @@ require('dotenv').config()
 const uploadImage = ( file ) => new Promise( (resolve, reject) => {
 
     const { originalname, buffer } = file
-    const blob = bucket.file( originalname.replace(/ /g,"_"))
+    let newFileName = uuidv1() + "---" + originalname.replace(/ /g,"_")
+    // const blob = bucket.file( originalname.replace(/ /g,"_"))
+    const blob = bucket.file( newFileName )
     const blobStream = blob.createWriteStream({
         resumable: false
     })
 
     blobStream.on( 'finish', () => {
-        // const publicUrl = `https://storage.cloud.google.com/${bucket.name}/${blob.name}`
+        // const authenticatedUrl = `https://storage.cloud.google.com/${bucket.name}/${blob.name}`
         const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`
         resolve( publicUrl )
     })
