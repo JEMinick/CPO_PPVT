@@ -2,6 +2,7 @@
   --blue-lighten-2: #64b5f6; /* #64b5f6 blue lighten-2 */
   --blue-lighten-5: #e3f2fd; /* #e3f2fd blue lighten-5-2 */
   --blue-darken-2: #1976d2; /* #1976d2 blue darken-2 */
+  --dark-blue: #0d47a1;
 }
 
 header, .project:not(:last-child) {
@@ -13,10 +14,14 @@ ul {
 }
 
 .petphoto {
-  min-height: 200px;
+  min-height: 100px;
   min-width: none;
-  max-width: 95%;
-  /* margin-left: 20%; */
+  max-width: 96%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: black; /* var(--dark-blue); */
 }
 
 .no-button {

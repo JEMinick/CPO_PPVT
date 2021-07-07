@@ -1,7 +1,8 @@
 :root {
   --white: #fff;
   --dark-blue: #0d47a1; /*  #0d47a1 blue darken-4 */
-  --medium-blue: #1565c0;
+  /* --medium-blue: #1565c0; */
+  --medium-blue: #1e56ac; /*  #0d47a1 blue darken-4 */
   --light-blue: #e3f2fd; 
   /* font-size: large; */
 }
