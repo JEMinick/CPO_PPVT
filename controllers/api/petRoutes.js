@@ -102,6 +102,14 @@ router.get('/edit/:id', withAuth, (req, res) => {
       if ( petInfo.pet_photo.length ) {
         var tmpArray=petInfo.pet_photo.split('/');
         petInfo.pet_photo_local = tmpArray[tmpArray.length-1];
+        if ( petInfo.pet_photo_local ) {
+          if ( petInfo.pet_photo_local.length ) {
+            var tmpArray2=petInfo.pet_photo.split('---');
+            if ( tmpArray2.length == 2 ) {
+              petInfo.pet_photo_local = tmpArray2[tmpArray2.length-1];
+            }
+          }
+        }
       }
     }
     // Create a file name to display on the form:
@@ -110,6 +118,14 @@ router.get('/edit/:id', withAuth, (req, res) => {
       if ( petInfo.pet_license_file.length ) {
         var tmpArray=petInfo.pet_license_file.split('/');
         petInfo.pet_license_local = tmpArray[tmpArray.length-1];
+        if ( petInfo.pet_license_local ) {
+          if ( petInfo.pet_license_local.length ) {
+            var tmpArray2=petInfo.pet_license_local.split('---');
+            if ( tmpArray2.length == 2 ) {
+              petInfo.pet_license_local = tmpArray2[tmpArray2.length-1];
+            }
+          }
+        }
       }
     }
     console.log( `\nEDIT pet info:` );

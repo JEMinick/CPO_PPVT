@@ -59,21 +59,36 @@ CREATE TABLE IF NOT EXISTS `pet_vaccines` (
 INSERT INTO `users` (
   `id`,`username`,`email`,`password`,`created_at`,`updated_at`) 
 VALUES (
-  1,"JohnD","john@idk.com","password1","2021-07-03","2021-07-03"
+  1,"JohnD","john@idk.com","password1","2021-07-07","2021-07-07"
 );
--- password1: $2b$10$85Mb2GD2dE8iMI4Ljl/Ygeddd1PPkvyEx7Klzl4jIvIUF/4n731pC
 INSERT INTO `users` (
   `id`,`username`,`email`,`password`,`created_at`,`updated_at`) 
 VALUES (
-  2,"JaneD","jane@idk.com","password2","2021-07-03","2021-07-03"
+  2,"JaneD","jane@idk.com","password2","2021-07-07","2021-07-07"
 );
--- password2: $2b$10$IozOQmPJO/GgDLePhBkKbeZ.lnWIHb3X0OZ1oI4RGXNluNJswhqI6
 INSERT INTO `users` (
   `id`,`username`,`email`,`password`,`created_at`,`updated_at`) 
 VALUES (
-  3,"JoeCool","joe@idk.com","password3","2021-07-03","2021-07-03"
+  3,"JoeCool","joe@idk.com","password3","2021-07-07","2021-07-07"
 );
--- password3: $2b$10$88v2evn5jMNCrDg2p3fBb.BC6euiJBhPJFin3.vNMbulKIvjdXwBO
+
+-- With password encryption:
+
+INSERT INTO `users` (
+  `id`,`username`,`email`,`password`,`created_at`,`updated_at`) 
+VALUES (
+  1,"JohnD","john@idk.com","$2b$10$85Mb2GD2dE8iMI4Ljl/Ygeddd1PPkvyEx7Klzl4jIvIUF/4n731pC","2021-07-07","2021-07-07"
+);
+INSERT INTO `users` (
+  `id`,`username`,`email`,`password`,`created_at`,`updated_at`) 
+VALUES (
+  2,"JaneD","jane@idk.com","$2b$10$IozOQmPJO/GgDLePhBkKbeZ.lnWIHb3X0OZ1oI4RGXNluNJswhqI6","2021-07-07","2021-07-07"
+);
+INSERT INTO `users` (
+  `id`,`username`,`email`,`password`,`created_at`,`updated_at`) 
+VALUES (
+  3,"JoeCool","joe@idk.com","$2b$10$88v2evn5jMNCrDg2p3fBb.BC6euiJBhPJFin3.vNMbulKIvjdXwBO","2021-07-07","2021-07-07"
+);
 
 -- ----------------------------------------------------------------------
 -- Add 3 test PETS for the 3 test user links:
