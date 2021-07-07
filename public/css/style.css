@@ -13,9 +13,10 @@ ul {
 }
 
 .petphoto {
+  min-height: 200px;
   min-width: none;
-  max-width: 50%;
-  margin-left: 20%;
+  max-width: 95%;
+  /* margin-left: 20%; */
 }
 
 .no-button {
