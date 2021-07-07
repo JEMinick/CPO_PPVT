@@ -12,6 +12,12 @@ ul {
   margin-left: 2rem;
 }
 
+.petphoto {
+  min-width: none;
+  max-width: 50%;
+  margin-left: 20%;
+}
+
 .no-button {
   background: none;
   border: none;
