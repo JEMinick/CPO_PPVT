@@ -118,56 +118,9 @@ const deletePet = async (event) => {
 
 
         console.log( `pet_photo: [${jResponse.pet_photo}]` );
-        if ( jResponse.pet_photo.length ) {
-          file = jResponse.pet_photo;
-          console.log( `Deleting image: [${file}]` );
-
-          let formLicenseData = new FormData()
-          formLicenseData.append("file", file)
-          // let jFileInfo = {
-          //   "file": jResponse.pet_vaccines[i].vaccine_license_file
-          // }
-          const response = await fetch('/uploadimages', {
-              method: "DELETE", 
-              body: formLicenseData
-          })
-          
-          const {data} = await response.json();
-  
-          console.log(  `DELETE (image) response:` );
-          console.log( response );
-        }
-
-        console.log( `pet_license_file: [${jResponse.pet_license_file}]` );
-        if ( jResponse.pet_license_file.length ) {
-          file = jResponse.pet_license_file;
-          console.log( `Deleting image: [${file}]` );
-
-          let formLicenseData = new FormData()
-          formLicenseData.append("file", file)
-          // let jFileInfo = {
-          //   "file": jResponse.pet_vaccines[i].vaccine_license_file
-          // }
-          const response = await fetch('/uploadimages', {
-              method: "DELETE", 
-              body: formLicenseData
-          })
-          
-          const {data} = await response.json();
-  
-          console.log(  `DELETE (image) response:` );
-          console.log( response );
-        }
-
-        let iTotalVaccines=jResponse.pet_vaccines.length
-        console.log( `Total # of vaccines for this pet: ${iTotalVaccines}` );
-
-        for( var i=0; ( i < iTotalVaccines ); i++ ) {
-
-          console.log( `${i}: ${jResponse.pet_vaccines[i].vaccine_license_file}` );
-
-          if ( jResponse.pet_vaccines[i].vaccine_license_file.length ) {
-            file = jResponse.pet_vaccines[i].vaccine_license_file;
+        if ( jResponse.pet_photo ) {
+          if ( jResponse.pet_photo.length ) {
+            file = jResponse.pet_photo;
             console.log( `Deleting image: [${file}]` );
 
             let formLicenseData = new FormData()
@@ -184,11 +137,64 @@ const deletePet = async (event) => {
     
             console.log(  `DELETE (image) response:` );
             console.log( response );
+          }
+        }  
+
+        console.log( `pet_license_file: [${jResponse.pet_license_file}]` );
+        if ( jResponse.pet_license_file ) {
+          if ( jResponse.pet_license_file.length ) {
+            file = jResponse.pet_license_file;
+            console.log( `Deleting image: [${file}]` );
+
+            let formLicenseData = new FormData()
+            formLicenseData.append("file", file)
+            // let jFileInfo = {
+            //   "file": jResponse.pet_vaccines[i].vaccine_license_file
+            // }
+            const response = await fetch('/uploadimages', {
+                method: "DELETE", 
+                body: formLicenseData
+            })
+            
+            const {data} = await response.json();
     
-            pet_license_file = data;
-    
-            console.log( `Pet License File:` );
-            console.log( data );
+            console.log(  `DELETE (image) response:` );
+            console.log( response );
+          }
+        }
+
+        let iTotalVaccines=jResponse.pet_vaccines.length
+        console.log( `Total # of vaccines for this pet: ${iTotalVaccines}` );
+
+        for( var i=0; ( i < iTotalVaccines ); i++ ) {
+
+          console.log( `${i}: ${jResponse.pet_vaccines[i].vaccine_license_file}` );
+
+          if ( jResponse.pet_vaccines[i].vaccine_license_file ) {
+            if ( jResponse.pet_vaccines[i].vaccine_license_file.length ) {
+              file = jResponse.pet_vaccines[i].vaccine_license_file;
+              console.log( `Deleting image: [${file}]` );
+
+              let formLicenseData = new FormData()
+              formLicenseData.append("file", file)
+              // let jFileInfo = {
+              //   "file": jResponse.pet_vaccines[i].vaccine_license_file
+              // }
+              const response = await fetch('/uploadimages', {
+                  method: "DELETE", 
+                  body: formLicenseData
+              })
+              
+              const {data} = await response.json();
+      
+              console.log(  `DELETE (image) response:` );
+              console.log( response );
+      
+              pet_license_file = data;
+      
+              console.log( `Pet License File:` );
+              console.log( data );
+            }
           }
   
         }
