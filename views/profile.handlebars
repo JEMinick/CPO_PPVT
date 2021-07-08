@@ -14,7 +14,7 @@
           <button class="btn btn-primary" 
                   id="delprofilebtn" 
                   type="submit">
-                  <a href="/api/users/del/{{loginid}}">
+                  <a href="/api/users/del/{{userInfo.id}}">
                     <i class="fas fa-trash text-light">  Delete Profile</i>
                   </a>
           </button>
@@ -30,7 +30,7 @@
       <label for="user-title" class="form-label">User Name (*):</label>
       <input type="text" id="user-name" name="user-title" class="form-input" value="{{userInfo.username}}" />
 
-      <label for="user-email-addr" class="form-label">eMail:</label>
+      <label for="user-email-addr" class="form-label">eMail (*):</label>
       <input id="user-email" name="user-email-addr" class="form-input" value="{{userInfo.email}}" />
 
       <div class="display-flex justify-space-between mt-4 gray-brdr edit-ftr-icons">
