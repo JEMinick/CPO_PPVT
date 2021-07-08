@@ -58,7 +58,7 @@ const deletePet = async (event) => {
         }
       }  
 
-      console.log( `pet_license_file: [${jResponse.pet_license_file}]` );
+      // console.log( `pet_license_file: [${jResponse.pet_license_file}]` );
       if ( jResponse.pet_license_file ) {
         if ( jResponse.pet_license_file.length ) {
           file = jResponse.pet_license_file;
