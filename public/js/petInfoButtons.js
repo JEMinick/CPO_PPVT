@@ -11,7 +11,7 @@ const petCardClickEvents = async (event) => {
   // --------------------------------------------------------------------------
   else if ( event.target.matches(".deletepetbtn") )
   // --------------------------------------------------------------------------
-  {
+  { 
     iPetID = event.target.getAttribute("data-petid")
     if ( iPetID > 0 ) {
 
