@@ -182,26 +182,26 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 // DELETE an existing PET:
-router.get('/del/:id', withAuth, async (req, res) => {
-  try {
-    const petInfo = await Pet.destroy({
-      where: {
-        id: req.params.id
-        // user_id: req.session.user_id
-      },
-    });
+// router.get('/del/:id', withAuth, async (req, res) => {
+//   try {
+//     const petInfo = await Pet.destroy({
+//       where: {
+//         id: req.params.id
+//         // user_id: req.session.user_id
+//       },
+//     });
 
-    if (!petInfo) {
-      res.status(404).json({ message: 'No pet found to delete using this id!' });
-      return;
-    }
+//     if (!petInfo) {
+//       res.status(404).json({ message: 'No pet found to delete using this id!' });
+//       return;
+//     }
 
-    res.status(200).json(petInfo);
-  }
-  catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.status(200).json(petInfo);
+//   }
+//   catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
@@ -231,26 +231,26 @@ router.delete('/:id', withAuth, async (req, res) => {
 // whereas this 'simulated' call is:
 //   /delete/:id
 // --------------------------------------------------------
-router.get('/delete/:id', withAuth, (req, res) => {
-  console.log( `\nDELETE PET: [${req.params.id}]` );
-  Pet.findOne({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then( dbPetRecord => {
-    // res.json(petData);
-    const petInfo = dbPetRecord.get({ plain: true });
-    console.log( `\nDELETE pet info:` );
-    console.log( petInfo );
-    // req.session.loggedIn = false;
-    // res.status(200).json(petInfo);
-    // res.render( '/', {petInfo, loggedIn: req.session.loggedIn} );    
-  }) 
-  .catch( err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
-});
+// router.get('/delete/:id', withAuth, (req, res) => {
+//   console.log( `\nDELETE PET: [${req.params.id}]` );
+//   Pet.findOne({
+//     where: {
+//       id: req.params.id
+//     }
+//   })
+//   .then( dbPetRecord => {
+//     // res.json(petData);
+//     const petInfo = dbPetRecord.get({ plain: true });
+//     console.log( `\nDELETE pet info:` );
+//     console.log( petInfo );
+//     // req.session.loggedIn = false;
+//     // res.status(200).json(petInfo);
+//     // res.render( '/', {petInfo, loggedIn: req.session.loggedIn} );    
+//   }) 
+//   .catch( err => {
+//     console.log(err);
+//     res.status(500).json(err);
+//   })
+// });
 
 module.exports = router;
