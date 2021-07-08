@@ -1,8 +1,5 @@
 <div class="card">
 
-  {{!-- <div class="card-header text-center">
-    <h4 id="pet-name">{{petname}}</h4>
-  </div> --}}
   <div class="card card-rounded card-header text-center mb-3 mt-2 ml-2 mr-2">
     <h4 id="pet-name" class="mt-2">{{petname}}</h4>
   </div>
@@ -42,10 +39,11 @@
                           </a>
                   </button>
 
-                  <button id="btnDeletePet" 
-                          class="btn btn-primary mb-2 ml-1" 
+                  <button id="btnDeletePet"
+                          class="btn btn-primary mb-2 ml-1 deletepetbtn"
+                          data-petid={{id}}
                           type="button"
-                          alt="Delete Pet">
+                          alt="Delete Pet Button">
                           Delete 
                           {{!-- <a href="/api/pets/delete/{{id}}">Delete  --}}
                              <i class="fas fa-trash text-light"></i>
