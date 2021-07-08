@@ -1,8 +1,9 @@
 const editVaccine = async (event) => {
     event.preventDefault();
 
+    // ------------------------------
     // VACCINE model:
-    // ---------------
+    // ------------------------------
     // id               :: NOT NULL
     // vaccine_name     :: NOT NULL
     // date_of_vaccine  :: NOT NULL
@@ -12,6 +13,7 @@ const editVaccine = async (event) => {
     // user_id          :: NOT NULL
     // pet_id           :: NOT NULL
     // date_created
+    // ------------------------------
 
     let file;
     let fieldSel;
@@ -25,7 +27,7 @@ const editVaccine = async (event) => {
     const iUserID = document.querySelector('input[name="user-id"]').value;
     const iPetID = document.querySelector('input[name="pet-id"]').value;
 
-    console.log( `ADD/EDIT VACCINE: VaccineID:[${iVaccineID}], PetID:[${iPetID}], UserID[${iUserID}]` );
+    // console.log( `ADD/EDIT VACCINE: VaccineID:[${iVaccineID}], PetID:[${iPetID}], UserID[${iUserID}]` );
 
     let vaccine_name;
     fieldSel = document.getElementById('vaccine-name');
@@ -72,7 +74,7 @@ const editVaccine = async (event) => {
 
       if ( vaccine_license_file ) {
 
-        console.log( `Uploading image: [${vaccine_license_file}]` );
+        // console.log( `Uploading image: [${vaccine_license_file}]` );
 
         let formLicenseData = new FormData()
         formLicenseData.append("file", file)
@@ -80,16 +82,8 @@ const editVaccine = async (event) => {
             method: "POST", 
             body: formLicenseData
         })
-        
         const {data} = await response.json();
-
-        console.log(  `POST (image) response:` );
-        console.log( response );
-
         vaccine_license_file = data;
-
-        console.log( `Vaccine License File:` );
-        console.log( data );
       }
 
       // if ( iVaccineID > 0 ) {
@@ -142,7 +136,6 @@ const editVaccine = async (event) => {
           document.location.replace('/');
         } else {
           alert(response2.statusText);
-          // alert( JSON.stringify(response2.statusText) );
         }
       }
 

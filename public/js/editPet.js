@@ -1,6 +1,10 @@
 const editPet = async (event) => {
     event.preventDefault();
 
+    // ----------------------------
+    // PET model:
+    // ----------------------------
+    // id
     // petname :: NOT NULL
     // pet_license_no
     // license_exp_date
@@ -8,6 +12,9 @@ const editPet = async (event) => {
     // dob
     // pet_photo
     // pet_license_file
+    // date_created :: default: NOW
+    // user_id
+    // ----------------------------
 
     let fieldSel;
 
@@ -67,25 +74,15 @@ const editPet = async (event) => {
       }
 
       if ( pet_photo ) {
-
-        console.log( `Uploading image: [${pet_photo}]` );
-
+        // console.log( `Uploading image: [${pet_photo}]` );
         let formPhotoImage = new FormData()
         formPhotoImage.append("file", file)
         const response = await fetch('/uploadimages', {
             method: "POST", 
             body: formPhotoImage
         })
-        
         const {data} = await response.json();
-
-        console.log(  `POST (image) response:` );
-        console.log( response );
-
         pet_photo = data;
-
-        console.log( `Pet Image File:` );
-        console.log( data );
       }
 
       let pet_license_file;
@@ -98,42 +95,16 @@ const editPet = async (event) => {
       }
 
       if ( pet_license_file ) {
-
-        console.log( `Uploading image: [${pet_license_file}]` );
-
+        // console.log( `Uploading image: [${pet_license_file}]` );
         let formLicenseData = new FormData()
         formLicenseData.append("file", file)
         const response = await fetch('/uploadimages', {
             method: "POST", 
             body: formLicenseData
         })
-        
         const {data} = await response.json();
-
-        console.log(  `POST (image image) response:` );
-        console.log( response );
-
         pet_license_file = data;
-
-        console.log( `Pet License File:` );
-        console.log( data );
       }
-
-      // if ( iPetID > 0 ) {
-      //   console.log( `Attempting to update pet: [ID:${iPetID}]` );
-      // } else {
-      //   console.log( `Attempting to add a new pet...` );
-      // }
-
-      // console.log(
-      //     { petname, 
-      //       pet_license_no, 
-      //       license_exp_date,
-      //       breed,
-      //       dob,
-      //       pet_photo,
-      //       pet_license_file
-      //     });
 
       let response2;
       if ( iPetID > 0 ) {
@@ -170,7 +141,6 @@ const editPet = async (event) => {
         document.location.replace('/');
       } else {
         alert(response2.statusText);
-        // alert( JSON.stringify(response2.statusText) );
       }
 
     }
@@ -179,7 +149,6 @@ const editPet = async (event) => {
   function cancelPetEdit() {
     document.location.replace('/');
   }
-
 
   document
     .querySelector( '#cancelPetEdit' )

@@ -1,10 +1,14 @@
 const editUser = async (event) => {
     event.preventDefault();
 
+    // ---------------------
+    // USER model:
+    // ---------------------
     // id  :: NOT NULL
     // username :: NOT NULL
     // email :: NOT NULL
     // password :: NOT NULL
+    // ---------------------
 
     let fieldSel;
 
@@ -41,7 +45,7 @@ const editUser = async (event) => {
 
       if ( user_photo ) {
 
-        console.log( `Uploading image: [${user_photo}]` );
+        // console.log( `Uploading image: [${user_photo}]` );
 
         let formPhotoImage = new FormData()
         formPhotoImage.append("file", file)
@@ -49,16 +53,8 @@ const editUser = async (event) => {
             method: "POST", 
             body: formPhotoImage
         })
-        
         const {data} = await response.json();
-
-        console.log(  `POST (image) response:` );
-        console.log( response );
-
         user_photo = data;
-
-        console.log( `User Image File:` );
-        console.log( data );
       }
 
       // if ( iUserID > 0 ) {
@@ -98,20 +94,18 @@ const editUser = async (event) => {
         document.location.replace('/');
       } else {
         alert(response2.statusText);
-        // alert( JSON.stringify(response2.statusText) );
       }
 
     }
   };
 
-  function cancelPetEdit() {
+  function cancelUserEdit() {
     document.location.replace('/');
   }
 
-
   document
     .querySelector( '#cancelUserEdit' )
-    .addEventListener( 'click', cancelPetEdit )
+    .addEventListener( 'click', cancelUserEdit )
 
   document
     .querySelector( '.edit-user-form' )
