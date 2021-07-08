@@ -92,21 +92,21 @@ const editVaccine = async (event) => {
         console.log( data );
       }
 
-      if ( iVaccineID > 0 ) {
-        console.log( `Attempting to update vaccine: [ID:${iVaccineID}]` );
-      } else {
-        console.log( `Attempting to add a new vaccine...` );
-      }
+      // if ( iVaccineID > 0 ) {
+      //   console.log( `Attempting to update vaccine: [ID:${iVaccineID}]` );
+      // } else {
+      //   console.log( `Attempting to add a new vaccine...` );
+      // }
 
-      console.log(
-          { vaccine_name, 
-            date_of_vaccine, 
-            vaccine_exp_date,
-            veterinarian,
-            vaccine_license_file,
-            iUserID,
-            iPetID
-          });
+      // console.log(
+      //     { vaccine_name, 
+      //       date_of_vaccine, 
+      //       vaccine_exp_date,
+      //       veterinarian,
+      //       vaccine_license_file,
+      //       iUserID,
+      //       iPetID
+      //     });
 
       let response2;
       if ( iVaccineID > 0 ) {

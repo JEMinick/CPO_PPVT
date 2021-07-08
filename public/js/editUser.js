@@ -61,17 +61,17 @@ const editUser = async (event) => {
         console.log( data );
       }
 
-      if ( iUserID > 0 ) {
-        console.log( `Attempting to update user: [ID:${iUserID}]` );
-      } else {
-        console.log( `Attempting to add a new user...` );
-      }
+      // if ( iUserID > 0 ) {
+      //   console.log( `Attempting to update user: [ID:${iUserID}]` );
+      // } else {
+      //   console.log( `Attempting to add a new user...` );
+      // }
 
-      console.log(
-          { iUserID, 
-            username, 
-            email
-          });
+      // console.log(
+      //     { iUserID, 
+      //       username, 
+      //       email
+      //     });
 
       let response2;
       if ( iUserID > 0 ) {

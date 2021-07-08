@@ -119,21 +119,21 @@ const editPet = async (event) => {
         console.log( data );
       }
 
-      if ( iPetID > 0 ) {
-        console.log( `Attempting to update pet: [ID:${iPetID}]` );
-      } else {
-        console.log( `Attempting to add a new pet...` );
-      }
+      // if ( iPetID > 0 ) {
+      //   console.log( `Attempting to update pet: [ID:${iPetID}]` );
+      // } else {
+      //   console.log( `Attempting to add a new pet...` );
+      // }
 
-      console.log(
-          { petname, 
-            pet_license_no, 
-            license_exp_date,
-            breed,
-            dob,
-            pet_photo,
-            pet_license_file
-          });
+      // console.log(
+      //     { petname, 
+      //       pet_license_no, 
+      //       license_exp_date,
+      //       breed,
+      //       dob,
+      //       pet_photo,
+      //       pet_license_file
+      //     });
 
       let response2;
       if ( iPetID > 0 ) {
