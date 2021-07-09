@@ -58,9 +58,9 @@ node server.js
 
 ## Contributing
 <a name="contributing"></a>
-There are many ways in which you can participate in the CPO-PPVT project, for example:
-*    [Submit bugs and feature requests](https://github.com/JEMinick/CPO-PPVT/issues), and help verify they are checked in;
-*    Review [source code changes](https://github.com/JEMinick/CPO-PPVT/pulls); and,
+There are many ways in which you can participate in the CPO_PPVT project, for example:
+*    [Submit bugs and feature requests](https://github.com/JEMinick/CPO_PPVT/issues), and help verify they are checked in;
+*    Review [source code changes](https://github.com/JEMinick/CPO_PPVT/pulls); and,
 *    Review the documentation and make pull requests for anything from typos to new content.
 
 ## Tests
