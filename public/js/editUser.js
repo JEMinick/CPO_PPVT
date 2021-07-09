@@ -1,18 +1,21 @@
+
 const editUser = async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    // ---------------------
-    // USER model:
-    // ---------------------
-    // id  :: NOT NULL
-    // username :: NOT NULL
-    // email :: NOT NULL
-    // password :: NOT NULL
-    // ---------------------
+  // ---------------------
+  // USER model:
+  // ---------------------
+  // id  :: NOT NULL
+  // username :: NOT NULL
+  // email :: NOT NULL
+  // password :: NOT NULL
+  // ---------------------
 
-    let fieldSel;
+  let fieldSel;
 
-    const iUserID = document.querySelector('input[name="user-id"]').value;
+  const iUserID = document.querySelector('input[name="user-id"]').value;
+
+  if ( iUserID > 0 ) {
 
     let username;
     fieldSel = document.getElementById('user-name');
@@ -97,16 +100,117 @@ const editUser = async (event) => {
       }
 
     }
-  };
-
-  function cancelUserEdit() {
+  }
+  else {
+    // Unable to retrieve the users.id ...
     document.location.replace('/');
   }
+};
 
-  document
-    .querySelector( '#cancelUserEdit' )
-    .addEventListener( 'click', cancelUserEdit )
+const deleteUserProfile = async (event) => {
+  const iUserID = document.querySelector('input[name="user-id"]').value;
+  if ( iUserID > 0 ) {
+    console.log( `Initiating routing request to delete user# [${iUserID}]` );
+    let response = await fetch(`/api/users/retrieve/${iUserID}`, {
+      method: 'GET'
+    })
 
-  document
-    .querySelector( '.edit-user-form' )
-    .addEventListener( 'submit', editUser )
+    if ( response.ok ) {
+
+      let jResponse = await response.json();
+      console.log( `USER RECORD:` );
+      console.log( jResponse );
+
+      let file='';
+
+      let iTotalPets=jResponse.user_pets.length;
+      console.log( `Pets associated to user#${iUserID}: [${iTotalPets}]` );
+
+      for( var iPetIdx=0; ( iPetIdx < iTotalPets ); iPetIdx++ )
+      {
+        let iPetID = jResponse.user_pets[iPetIdx].id;
+        if ( iPetID > 0 ) {
+          console.log( `\n[${iPetIdx}]: ${jResponse.user_pets[iPetIdx].petname} with id: ${iPetID}` );
+          if ( jResponse.user_pets[iPetIdx].pet_photo ) {
+            if ( jResponse.user_pets[iPetIdx].pet_photo.length ) {
+              file = jResponse.user_pets[iPetIdx].pet_photo
+              console.log( `   Deleting image: [${file}]` );
+              let formLicenseData = new FormData()
+              formLicenseData.append("file", file)
+              const response = await fetch('/uploadimages', {
+                  method: "DELETE", 
+                  body: formLicenseData
+              })
+              const {data} = await response.json();
+            }
+          }
+          if ( jResponse.user_pets[iPetIdx].pet_license_file ) {
+            if ( jResponse.user_pets[iPetIdx].pet_license_file.length ) {
+              file = jResponse.user_pets[iPetIdx].pet_license_file;
+              console.log( `   Deleting image: [${file}]` );
+              let formLicenseData = new FormData()
+              formLicenseData.append("file", file)
+              const response = await fetch('/uploadimages', {
+                  method: "DELETE", 
+                  body: formLicenseData
+              })
+              const {data} = await response.json();
+            }
+          }
+
+          let iTotalVaccines=jResponse.user_pets[iPetIdx].pet_vaccines.length
+          console.log( `Vaccines associated to pet#${iPetID}: [${iTotalVaccines}]` );
+
+          for( var iVacIdx=0; ( iVacIdx < iTotalVaccines ); iVacIdx++ ) {
+            file = jResponse.user_pets[iPetIdx].pet_vaccines[iVacIdx].vaccine_license_file;
+            if ( file ) {
+              if ( file.length ) {
+                console.log( `   Deleting image: [${file}]` );
+                let formLicenseData = new FormData()
+                formLicenseData.append("file", file)
+                const response = await fetch('/uploadimages', {
+                    method: "DELETE", 
+                    body: formLicenseData
+                })
+                const {data} = await response.json();
+              }
+            }
+          } // endFor( iVacIdx )
+  
+        } // endIf( iPetID > 0 )
+
+      } // endFor( iPetIdx )
+
+      let response2 = await fetch(`/api/users/${iUserID}`, {
+        method: 'DELETE',
+        body: JSON.stringify(
+            { iUserID }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if ( response2.ok ) {
+        document.location.replace('/');
+      } else {
+        alert( response2.statusText );
+      }
+
+    }
+  }
+  document.location.replace('/');
+}
+
+function cancelUserEdit() {
+  document.location.replace('/');
+}
+
+// ============================================================================
+
+document
+  .querySelector( '#cancelUserEdit' )
+  .addEventListener( 'click', cancelUserEdit )
+document
+  .querySelector( '.edit-user-form' )
+  .addEventListener( 'submit', editUser )
+document
+  .querySelector( '#delprofilebtn' )
+  .addEventListener( 'click', deleteUserProfile )

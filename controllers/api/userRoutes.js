@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Pet, Vaccine } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/newuser', async (req, res) => {
@@ -70,7 +70,7 @@ router.post('/logout', (req, res) => {
 });
 
 // DELETE an existing USER:
-router.get('/del/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const userInfo = await User.destroy({
       where: {
@@ -125,12 +125,10 @@ router.get('/delete/:id', withAuth, (req, res) => {
 
 // ==========================================================================
 // UPDATE an existing USER:
-
 // id  :: NOT NULL
 // username :: NOT NULL
 // email :: NOT NULL
 // password :: NOT NULL
-
 router.put('/:id', withAuth, async (req, res) => {
   await User.update({
     username: req.body.username,
@@ -151,6 +149,75 @@ router.put('/:id', withAuth, async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   });
+});
+
+// ==========================================================================
+// Retrieve a commplete record for an existing user:
+router.get('/retrieve/:id', withAuth, (req, res) => {
+  // console.log( `\nGET user info: ${req.params.id}` );
+
+  User.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'username',
+      'email'
+    ],
+    include: [
+      {
+        model: Pet,
+        attributes: [
+          'id',
+          'petname',
+          'pet_license_no',
+          'license_exp_date',
+          'breed',
+          'dob',
+          'pet_photo',
+          'pet_license_file',
+          'date_created',
+          'user_id'
+        ],
+        include: [
+          {
+            model: Vaccine,
+            attributes: [
+              'id',
+              'veterinarian',
+              'vaccine_name',
+              'date_of_vaccine',
+              'vaccine_exp_date',
+              'vaccine_license_file',
+              'user_id',
+              'pet_id',
+              'date_created'
+            ]
+          },
+        ],
+      },
+    ]
+  })
+  
+  .then( dbUserRecord => {
+    const userInfo = dbUserRecord.get({ plain: true });
+    // Create a 'local' file name from the public google URL:
+    // userInfo.user_photo_local = '';
+    // if ( userInfo.user_photo ) {
+    //   if ( userInfo.user_photo.length ) {
+    //     var tmpArray=userInfo.user_photo.split('/');
+    //     userInfo.user_photo_local = tmpArray[tmpArray.length-1];
+    //   }
+    // }
+    console.log( `\nRETRIEVED user info:` );
+    console.log( userInfo );
+    res.status(200).json(userInfo);
+  }) 
+  .catch( err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
 });
 
 module.exports = router;
