@@ -16,8 +16,25 @@ const multerID = multer({
   }
 })
 
+// ======================================================================
+var compression = require('compression')
+// ======================================================================
+
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// ======================================================================
+app.use(compression({ filter: shouldCompress }))
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+ 
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
+// ======================================================================
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
