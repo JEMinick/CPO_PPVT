@@ -71,22 +71,26 @@ const sKeysJSON =`
 //   stream.end();
 // });
 
-fs.writeFile( outputFile, sKeysJSON, (error) => {
-  if ( error ) {
-      bError = true;
-      console.error(error);
-  } else {
-    // if ( bDebugging )
-    //   console.log(`\nFILE CONTENTS:`)
-  }
-});
-if ( !bError ) {
-  console.log( `Created file: ${outputFile}...` );
-  // serviceKey = outputFile;
-}
-else {
-  console.log( `Unable to create file: ${outputFile}...` );
-}
+// =========================================================
+// Why am I still creating keys.json?
+// Disabling for now...
+// fs.writeFile( outputFile, sKeysJSON, (error) => {
+//   if ( error ) {
+//       bError = true;
+//       console.error(error);
+//   } else {
+//     // if ( bDebugging )
+//     //   console.log(`\nFILE CONTENTS:`)
+//   }
+// });
+// if ( !bError ) {
+//   console.log( `Created file: ${outputFile}...` );
+//   // serviceKey = outputFile;
+// }
+// else {
+//   console.log( `Unable to create file: ${outputFile}...` );
+// }
+// =========================================================
 
 // projectId: 'storage'
 const storage = new Storage({
