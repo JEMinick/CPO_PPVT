@@ -5,22 +5,19 @@
   </div>
 
   <div class="container-fluid">
+
     <div class="row">
 
       <div class="col-sm-5 list-container mt-3 ml-2">
+
         <div class="card">
 
-        {{!-- vaccine-id is needed on an edit: --}}
-        <input type="hidden" name="pet-id" value="{{id}}" />
+          {{!-- vaccine-id is needed on an edit: --}}
+          <input type="hidden" name="pet-id" value="{{id}}" />
 
-        {{!-- <div class="flex-column justify-space-around">
-          <div class="display-flex justify-space-between align-center p-2">
-            <h3>Pet Information</h3>
+          <div class="card card-rounded card-header text-center mb-3 mt-2 ml-2 mr-2">
+            <h4 class="mt-2">Pet Record</h4>
           </div>
-        </div> --}}
-        <div class="card card-rounded card-header text-center mb-3 mt-2 ml-2 mr-2">
-          <h4 class="mt-2">Pet Record</h4>
-        </div>
 
           <div class="flex-column justify-space-around">
             <div class="display-flex justify-space-between align-center p-2">
@@ -77,9 +74,6 @@
 
         {{#if pet_photo.length}}
         <div class="card mt-1">
-          {{!-- <img id="petPic" 
-            src="{{pet_photo}}"
-            alt="Picture of Pet"> --}}
           <a  class="link" 
               href="{{pet_photo}}" 
               target="_blank">
@@ -95,7 +89,8 @@
             alt="Pet Image placeholder">
         </div>
         {{/if}}
-      </div>
+
+      </div> {{!-- endColSm5 --}}
 
       <div class="col mt-2 ml-2">
 
@@ -116,9 +111,7 @@
 
       </div>
 
-    </div>
-  </div>
+    </div> {{!-- endRow --}}
+  </div> {{!-- endContainerFluid --}}
 
 </div>
-
-{{!-- <script src="/js/petInfoButtons.js"></script> --}}

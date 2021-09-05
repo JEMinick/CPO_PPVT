@@ -1,5 +1,5 @@
 node_modules/
 google/*.json
-gcs-ppvt-bbd201c2e459.json
+config/*.json
 .env
 keys.json
