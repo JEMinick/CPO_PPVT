@@ -39,19 +39,19 @@ if ( sNewEnvKey.length )
 //   client_id: process.env.GCS_CLIENT_ID
 // };
 
-// const sKeysJSON =`
-// {
-//   "type": "service_account",
-//   "project_id": "${process.env.GCS_PROJECT_ID}",
-//   "private_key_id": "${process.env.GCS_PROJECT_KEY_ID}",
-//   "private_key": "${sEnvKey}",
-//   "client_email": "${process.env.GCS_CLIENT_EMAIL}",
-//   "client_id": "${process.env.GCS_CLIENT_ID}",
-//   "auth_uri": "${process.env.GCS_AUTH_URL}",
-//   "token_uri": "${process.env.GCS_TOKEN_URL}",
-//   "auth_provider_x509_cert_url": "${process.env.GCS_AUTH_PROVIDER_X509_CERT_URL}",
-//   "client_x509_cert_url": "${process.env.GCS_CLIENT_X509_CERT_URL}"
-// }`;
+const sKeysJSON =`
+{
+  "type": "service_account",
+  "project_id": "${process.env.GCS_PROJECT_ID}",
+  "private_key_id": "${process.env.GCS_PROJECT_KEY_ID}",
+  "private_key": "${sEnvKey}",
+  "client_email": "${process.env.GCS_CLIENT_EMAIL}",
+  "client_id": "${process.env.GCS_CLIENT_ID}",
+  "auth_uri": "${process.env.GCS_AUTH_URL}",
+  "token_uri": "${process.env.GCS_TOKEN_URL}",
+  "auth_provider_x509_cert_url": "${process.env.GCS_AUTH_PROVIDER_X509_CERT_URL}",
+  "client_x509_cert_url": "${process.env.GCS_CLIENT_X509_CERT_URL}"
+}`;
 
 
 // var stream = fs.createWriteStream("my_file.json");
@@ -71,26 +71,22 @@ if ( sNewEnvKey.length )
 //   stream.end();
 // });
 
-// =========================================================
-// Why am I still creating keys.json?
-// Disabling for now...
-// fs.writeFile( outputFile, sKeysJSON, (error) => {
-//   if ( error ) {
-//       bError = true;
-//       console.error(error);
-//   } else {
-//     // if ( bDebugging )
-//     //   console.log(`\nFILE CONTENTS:`)
-//   }
-// });
-// if ( !bError ) {
-//   console.log( `Created file: ${outputFile}...` );
-//   // serviceKey = outputFile;
-// }
-// else {
-//   console.log( `Unable to create file: ${outputFile}...` );
-// }
-// =========================================================
+fs.writeFile( outputFile, sKeysJSON, (error) => {
+  if ( error ) {
+      bError = true;
+      console.error(error);
+  } else {
+    // if ( bDebugging )
+    //   console.log(`\nFILE CONTENTS:`)
+  }
+});
+if ( !bError ) {
+  console.log( `Created file: ${outputFile}...` );
+  // serviceKey = outputFile;
+}
+else {
+  console.log( `Unable to create file: ${outputFile}...` );
+}
 
 // projectId: 'storage'
 const storage = new Storage({
